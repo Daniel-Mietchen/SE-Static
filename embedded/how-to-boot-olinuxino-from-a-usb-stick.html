@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>bootloader - How to boot OLinuXino from a USB stick? - Embedded Systems Stack Exchange</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/embedded/img/favicon.ico?v=b1339aa5fb6c">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/embedded/img/apple-touch-icon.png?v=74a50e8f6eeb">
+    <link rel="search" type="application/opensearchdescription+xml" title="Embedded Systems Stack Exchange" href="http://embedded.stackexchange.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="embedded.stackexchange.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/embedded/img/apple-touch-icon.png?v=74a50e8f6eeb&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="How to boot OLinuXino from a USB stick?" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have the A13-OLinuXino board.
+
+It booted from the SD card successfully, but the boot process does not start if I try to boot from a USB stick.
+
+How do I boot OLinuXino from a USB stick?
+" />
+    <meta property="og:url" content="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick"/>
+    <link rel="canonical" href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick.html" />
+
+    
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdn.sstatic.net/Js/stub.en.js?v=f1e183e138a3"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.sstatic.net/embedded/all.css?v=2ad427d961ef">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;How to boot OLinuXino from a USB stick?&#39;" href="http://embedded.stackexchange.com/feeds/question/7">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:7,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:7});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('627', '7');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.ready(function () {
+            StackExchange.realtime.init('wss://qa.sockets.stackexchange.com,ws://qa.sockets.stackexchange.com');
+            StackExchange.realtime.subscribeToReputationNotifications('627');
+                StackExchange.realtime.subscribeToTopBarNotifications('627');
+        });
+    </script>
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1439500627,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":false,"domain":"stacksnippets.net"},"site":{"name":"Embedded Systems Stack Exchange","description":"Q&A for developers of embedded hardware and software systems","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdsB7sSAAAAAAzjgEF_Hd8vXv-C42sa_KyofaGR","recaptchaAudioLang":"en","enableNewTagCreationWarning":false,"insertSpaceAfterNameTabCompletion":false,"globalAuthDisabled":true},"user":{"fkey":"9597b610caf80e1d0808012ba42aedd6","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"c35b9a1e9808","js/moderator.en.js":"4926bb61c50e","js/full-anon.en.js":"1d5cd3b58d12","js/full.en.js":"f6074df299ce","js/wmd.en.js":"7a996ac7795a","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"4274196afa9d","js/help.en.js":"ce2977cf4348","js/tageditor.en.js":"c84618a71b61","js/tageditornew.en.js":"a13ff16edbe4","js/inline-tag-editing.en.js":"06a39d658ac8","js/revisions.en.js":"a80e312b9d39","js/review.en.js":"147cf9193349","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"6e0156aecdd3","js/explore-qlist.en.js":"b5ce0a2a9966","js/events.en.js":"58a0c4edcdee","js/keyboard-shortcuts.en.js":"13e3264f7ae5","js/external-editor.en.js":"20a8e0ae5ded","js/external-editor.en.js":"20a8e0ae5ded"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://embedded.stackexchange.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackexchange.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackexchange.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="http://embedded.stackexchange.com/"
+       class="current-site-link site-link js-gps-track"
+       data-id="627"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-embedded" title="Embedded Systems"></div>
+        Embedded Systems
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.embedded.stackexchange.com"
+       class="site-link js-gps-track"
+       data-id="628"
+       data-gps-track="
+            site.switch({ target_site:628, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-embeddedmeta" title="Embedded Systems Meta"></div>
+        Embedded Systems Meta
+    </a>
+
+                </li>
+                    </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://embedded.stackexchange.com/users/signup?returnurl=http%3a%2f%2fembedded.stackexchange.com%2fquestions%2f7%2fhow-to-boot-olinuxino-from-a-usb-stick" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://embedded.stackexchange.com/users/login?returnurl=http%3a%2f%2fembedded.stackexchange.com%2fquestions%2f7%2fhow-to-boot-olinuxino-from-a-usb-stick" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 149 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://embedded.stackexchange.com/users/signup?returnurl=http%3a%2f%2fembedded.stackexchange.com%2fquestions%2f7%2fhow-to-boot-olinuxino-from-a-usb-stick" class="login-link">sign up</a>
+                                <a href="https://embedded.stackexchange.com/users/login?returnurl=http%3a%2f%2fembedded.stackexchange.com%2fquestions%2f7%2fhow-to-boot-olinuxino-from-a-usb-stick" class="login-link">log in</a>
+
+                        <a href="http://embedded.stackexchange.com/tour">tour</a>
+                            <a href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick.html#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://embedded.stackexchange.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://embedded.stackexchange.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.embedded.stackexchange.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://embedded.stackexchange.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://embedded.stackexchange.com/" >
+                    Embedded Systems
+                        <span class="beta-title">beta</span>
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://embedded.stackexchange.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://embedded.stackexchange.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://embedded.stackexchange.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://embedded.stackexchange.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://embedded.stackexchange.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="http://embedded.stackexchange.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+                <div id="system-message-temp">
+                    <script>
+                        var curSystemMessage = 'This site will be closing on <a href="http:\/\/meta.embedded.stackexchange.com\/questions\/69\/closing-this-site-on-friday-august-14">August 14<\/a>.';
+                        $('#system-message-temp').html(curSystemMessage).attr('id', 'system-message');
+                    </script>
+                </div>
+
+
+        <div id="content">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/embedded/img/apple-touch-icon.png?v=74a50e8f6eeb">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="http://embedded.stackexchange.com/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Embedded Systems Stack Exchange is a question and answer site for developers of embedded hardware and software systems. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+                <h1 itemprop="name"><a href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick.html" class="question-hyperlink">How to boot OLinuXino from a USB stick?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="7"  id="question">
+
+        <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="7">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick.html#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have the <a href="https://www.olimex.com/Products/OLinuXino/A13/A13-OLinuXino/open-source-hardware" rel="nofollow">A13-OLinuXino board</a>.</p>
+
+<p>It booted from the SD card successfully, but the boot process does not start if I try to boot from a USB stick.</p>
+
+<p>How do I boot OLinuXino from a USB stick?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://embedded.stackexchange.com/questions/tagged/bootloader" class="post-tag" title="show questions tagged &#39;bootloader&#39;" rel="tag">bootloader</a> <a href="http://embedded.stackexchange.com/questions/tagged/olinuxino" class="post-tag" title="show questions tagged &#39;olinuxino&#39;" rel="tag">olinuxino</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://embedded.stackexchange.com/q/7" title="short permalink to this question" class="short-link" id="link-post-7">share</a><span class="lsep">|</span><a href="http://embedded.stackexchange.com/posts/7/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://embedded.stackexchange.com/posts/7/revisions" title="show all edits to this post">edited <span title="2015-07-28 22:51:22Z" class="relativetime">Jul 28 at 22:51</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/119/peter-mortensen"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/RIZKi.png?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/119/peter-mortensen">Peter Mortensen</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">105</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2015-07-28 18:25:03Z" class="relativetime">Jul 28 at 18:25</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/30/alexander-barakin"><div class="gravatar-wrapper-32"><img src="https://lh3.googleusercontent.com/-8dJKxUdAvb4/AAAAAAAAAAI/AAAAAAAAAFs/wI3wHcp39eA/photo.jpg?sz=32" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/30/alexander-barakin">alexander barakin</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">126</span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-7" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-15" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I would suggest you add some more details about your issue so someone can actually help you fix it. Questions that have a simple yes or no answer (like &quot;is it possible to...&quot;) aren&#39;t going to be very helpful to future users. If you give the question some more substance, it will be more helpful to future visitors.</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/52/skrrgwasme"
+                       title="750 reputation"
+                       class="comment-user">skrrgwasme</a>
+                <span class="comment-date" dir="ltr"><span title="2015-07-28 18:59:11Z" class="relativetime-clean">Jul 28 at 18:59</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-19" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@skrrgwasme, thank you, i reformulated the question. but i do not know what additional information should i provide.</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/30/alexander-barakin"
+                       title="126 reputation"
+                       class="comment-user owner">alexander barakin</a>
+                <span class="comment-date" dir="ltr"><span title="2015-07-28 19:03:49Z" class="relativetime-clean">Jul 28 at 19:03</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-20" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">A dump of serial debug output during boot would be helpful. That will tell you if the USB stick is being checked for an OS image, or if the image is found but can&#39;t be loaded for some reason.</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/52/skrrgwasme"
+                       title="750 reputation"
+                       class="comment-user">skrrgwasme</a>
+                <span class="comment-date" dir="ltr"><span title="2015-07-28 19:08:38Z" class="relativetime-clean">Jul 28 at 19:08</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-22" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy"><i>A dump of serial debug output</i> — alas, i do not know how to get it. perhaps it would be better to ask one more question about <b>this</b>.</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/30/alexander-barakin"
+                       title="126 reputation"
+                       class="comment-user owner">alexander barakin</a>
+                <span class="comment-date" dir="ltr"><span title="2015-07-28 19:15:21Z" class="relativetime-clean">Jul 28 at 19:15</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-33" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received"
+                                      class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Note, however, that this Olimex forum post suggests this particular CPU doesn&#39;t support USB booting: <a href="https://www.olimex.com/forum/index.php?topic=709.5;wap2" rel="nofollow">olimex.com/forum/index.php?topic=709.5;wap2</a> Consider contacting Olimex for clarification, since their datasheet does say it can boot from USB.</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/86/adam-davis"
+                       title="201 reputation"
+                       class="comment-user">Adam Davis</a>
+                <span class="comment-date" dir="ltr"><span title="2015-07-28 20:23:27Z" class="relativetime-clean">Jul 28 at 20:23</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-7" data-rep=1 data-anon=true>
+
+                <a class="js-add-link comments-link  dno"
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   ></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick.html#" onclick="">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								2 Answers
+                                <span style="display:none;" itemprop="answerCount">2</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">active</a>
+        <a href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">oldest</a>
+        <a class="youarehere" href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="32"></a>
+<div id="answer-32" class="answer" data-answerid="32"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="32">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The only approach I can find to make this work is to take advantage of special operating mode of the Allwinner SOC called <a href="http://linux-sunxi.org/FEL" rel="nofollow">FEL</a> mode. (I can't find what the acronym actually stands for.)</p>
+
+<p>FEL Mode is "<a href="http://linux-sunxi.org/FEL" rel="nofollow">a low-level subroutine contained in the BootROM on allwinner devices. It is used for initial programming and recovery of devices using USB.</a>" By switching into this debug mode, you can get the SOC to boot via the <a href="https://en.wikipedia.org/wiki/USB_On-The-Go" rel="nofollow">USB OTG</a> port. It does take some special configuration of the OS and bootloader to make it work though, and I can only find information about preparing an image of <a href="http://linux-sunxi.org/Main_Page" rel="nofollow">Sunxi Linux</a> for it. </p>
+
+<p>This is the official guide: <a href="http://linux-sunxi.org/FEL/USBBoot" rel="nofollow">http://linux-sunxi.org/FEL/USBBoot</a>. I think the process is too long to repeat here, so you'll have to consult this guide.</p>
+
+<p>If anything is missing, here is another tutorial I found on this topic: <a href="http://docs.cubieboard.org/tutorials/cb2/development/booting_from_usb_in_fel_mode" rel="nofollow">http://docs.cubieboard.org/tutorials/cb2/development/booting_from_usb_in_fel_mode</a></p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://embedded.stackexchange.com/a/32" title="short permalink to this answer" class="short-link" id="link-post-32">share</a><span class="lsep">|</span><a href="http://embedded.stackexchange.com/posts/32/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-07-28 20:23:47Z" class="relativetime">Jul 28 at 20:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/52/skrrgwasme"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/9a6Qc.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/52/skrrgwasme">skrrgwasme</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">750</span><span title="17 bronze badges"><span class="badge3"></span><span class="badgecount">17</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-32" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-32" data-rep=1 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick.html#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="33"></a>
+<div id="answer-33" class="answer" data-answerid="33"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="33">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<h1>DISCLAIMER: I have never booted an A13-Olinuxino.</h1>
+
+<p>The answer to this question depends on your current setup, but for now I am going to assume that you are using uboot as your current bootloader. There may be some slight differences from the version of uboot that I am familiar with and the version that the A13-Olinuxino uses, so be warned.</p>
+
+<p>If you check the files on the boot partition of your SD card, you should find a file named <code>uEnv.txt</code>. This file is the uboot bootscript and it contains the boot configuration. More information on this file can be found <a href="https://linux-sunxi.org/UEnv.txt" rel="nofollow">here</a>. This file will be the key to booting from USB, so be sure to make a backup somewhere. Also, please note that I am assuming your USB stick has been properly formatted.</p>
+
+<p>To get started, make sure that your SD card is inserted, and you are connected to the serial debug port on the board. For the A13-Olinuxino, the <a href="https://www.olimex.com/Products/OLinuXino/A13/A13-OLinuXino/resources/A13-OLINUXINO.pdf" rel="nofollow">user's manual</a> suggests that the USB Mini B connector can be used for this. </p>
+
+<ol>
+<li><p>Begin by plugging your A13-Olinuxino into a separate computer using the USB Mini B connector. (Note: If you do not see the debug output from step 2, then try using the UART1 connector with a <a href="https://www.olimex.com/Products/Components/Cables/USB-Serial-Cable/USB-Serial-Cable-F/" rel="nofollow">USB-to-UART</a>).</p></li>
+<li><p>You are going to need a serial terminal, if you are using windows I recommend <a href="http://en.osdn.jp/projects/ttssh2/releases/" rel="nofollow">TerraTerm</a>, and for linux <a href="https://help.ubuntu.com/community/Minicom" rel="nofollow">Minicom</a> should suffice. Connect your USB-to-UART, and open the correct port with your terminal software of choice (you can jumper the TX and RX pins to test which port is connected). With your A13-Olinuxino connected, apply power to the board (again, make sure your SD card is inserted because we are going to be booting from it initially). If everything is connected properly, you should see the uboot prompt in your terminal.</p></li>
+<li><p>The following is the output from the version of uboot that I use (an AM335X board), your output should be similar:</p></li>
+</ol>
+
+<p><code>U-Boot 2013.10-g6c6a700 (Nov 20 2013 - 16:56:02)</code></p>
+
+<pre><code>AM335X-GP rev 0
+I2C:   ready
+DRAM:  256 MiB
+WARNING: Caches not enabled
+NAND:  Using 2k bch8 layout
+ECC Mode = 2 lo = 56/0
+256 MiB
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+Net:   Could not get PHY for cpsw: addr 1
+Could not get PHY for cpsw: addr 1
+cpsw
+Hit any key to stop autoboot:  0
+U-Boot#
+</code></pre>
+
+<p>At <code>Hit any key to stop autoboot:</code> press a key. You should get a <code>U-Boot#</code> prompt. From here you can run the command <code>printenv</code> to display the contents of the uEnv.txt file (actually is prints the current environment, but since that was loaded from the uEnv.txt file...).</p>
+
+<ol start="4">
+<li>Within the large wall of text from printenv (and it will be a wall), there should be a variable <code>bootcmd</code>. This is the piece of information that uboot uses to decide which peripheral to boot from whether it be NAND flash, MMC, USB, Ethernet, I2C, SPI etc. Since I have never seen the uboot configuration from the A13-Olinuxino, I can only give you a rough idea of what needs to be changed. The <code>bootcmd</code> variable for my current board is as follows: </li>
+</ol>
+
+<p><code>bootcmd=if mmc rescan; then echo SD/MMC found on ${mmc_dev};run mmc_boot;fi;run nand_boot;</code></p>
+
+<p>This tells uboot to search for an MMC, to boot from it if one is found, and if not boot from NAND flash. In this case <code>mmc_boot</code> and <code>nand_boot</code> are other variables present in my <code>uEnv.txt</code> file, so please do not just copy this to your file. </p>
+
+<ol start="5">
+<li>This is where you will need to modify the <code>bootcmd</code> value. <a href="http://wiki.samygo.tv/index.php5/Boot_from_USB_using_u-boot" rel="nofollow">This page</a> should provide what you will need to know, but essentially your <code>bootcmd</code> variable should resemble something like this: <code>usb start;fatload usb 0 61000000 uImage;bootm</code>. You can set the current environment variable by using either the <code>editenv</code> command, or <code>askenv</code>. The <code>editenv</code> command will allow you to do an in-place edit of the command, and <code>askenv</code> will ask you for the complete command. </li>
+</ol>
+
+<p>For example:</p>
+
+<pre><code>askenv bootcmd
+usb start;fatload usb 0 61000000 uImage;bootm
+printenv bootcmd
+</code></pre>
+
+<p>Will allow you to set, and then verify the contents of the bootcmd variable. Please write down, copy, or memorize the changes you make here, they are not permanent!</p>
+
+<ol start="6">
+<li><p>Once you have set the variable in memory using either the <code>setenv</code> or <code>editenv</code> commands, insert the USB stick and execute <code>run bootcmd</code>. This will use the uboot command parser to run the contents of the <code>bootcmd</code> variable. If this process is successful, you should see linux boot. Honestly, though, I doubt that the <code>bootcmd</code> I have provided will work without some input from you in the comments.</p></li>
+<li><p>Now that, hopefully, you have successfully booted from USB we will be saving the environment so that the SD card is no longer needed to boot from. Power off the board and insert the SD card into your computer, we will be modifying the <code>uEnv.txt</code> file. From step 5, you should have a good copy of the bootcmd that worked for you, delete the current <code>bootcmd</code> entry, and replace it with yours. Make sure it says <code>bootcmd=</code> before your command.</p></li>
+<li><p>Insert the SD card into the A13-Olinuxino one last time, and boot into uboot (press a key to stop autoboot), and run the <code>printenv</code> command. Verify that the <code>bootcmd</code> variable is correct, and then type <code>saveenv</code>. The <code>saveenv</code> command should save the current environment to the NAND flash chip present on the A13-Olinuxino. Finally, power off the board, remove the SD card, and insert the USB stick. If all has gone well, the following boot process should load the environment from NAND, run your <code>bootcmd</code>, and boot linux from your USB drive.</p></li>
+</ol>
+
+<p>A few things: It is generally a bad idea to enforce one single boot option. If you remember the <code>bootcmd</code> from my board, you will see that I boot from the SD card if it is present. Looking over the <a href="https://github.com/OLIMEX/OLINUXINO/blob/master/HARDWARE/A13-OLinuXino/A13-OLinuXino_Rev_C.sch.pdf" rel="nofollow">schematic</a> for the A13-Olinuxino, there does not appear to be any boot mode jumpers. I cannot speak to the A13 SoC, but there are some devices that require a boot mode configuration (such as the AM335X), so if you get stuck that could by why. </p>
+
+<p>By the way, if you are looking for a getting started tutorial, <a href="http://shawnhymel.com/9/getting-started-with-the-olimex-a13-olinuxino-micro/" rel="nofollow">this one</a> looks great.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://embedded.stackexchange.com/a/33" title="short permalink to this answer" class="short-link" id="link-post-33">share</a><span class="lsep">|</span><a href="http://embedded.stackexchange.com/posts/33/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-07-28 20:42:00Z" class="relativetime">Jul 28 at 20:42</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/70/david-freitag"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/354a54b76a662bf37e5ac4f788e211a0?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/70/david-freitag">David Freitag</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">123</span><span title="9 bronze badges"><span class="badge3"></span><span class="badgecount">9</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-33" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-33" data-rep=1 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick.html#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+							<h2 class="bottom-notice">You must <a href="http://embedded.stackexchange.com/users/login?returnurl=%2fquestions%2f7">log in</a> to answer this question.</h2>
+				
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="http://embedded.stackexchange.com/questions/tagged/bootloader" class="post-tag" title="show questions tagged &#39;bootloader&#39;" rel="tag">bootloader</a> <a href="http://embedded.stackexchange.com/questions/tagged/olinuxino" class="post-tag" title="show questions tagged &#39;olinuxino&#39;" rel="tag">olinuxino</a> .						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2015-07-28 18:25:03Z"><b>16 days ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>35 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick?lastactivity" class="lastactivity-link" title="2015-07-28 22:51:22Z">15 days ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackexchange.com/2015/08/Stack-Spotlight-Bethany-Marzewski/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackexchange.com/2015/08/Stack-Spotlight-Bethany-Marzewski/" class="question-hyperlink">Stack Spotlight: Bethany Marzewski</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>			
+			<div class="module newuser"> 
+    <h4>Invite Fellow Experts</h4>
+    email a private beta invite to:<br>
+    <input type="text" name="invite-email" id="invite-email" style="width:195px" />
+    <p>
+    </p>
+    message (optional):<br>
+    <textarea name="invite-body" id="invite-body" style="width:195px"></textarea>
+    <input type="button" value="send invite" id="invite-send" />
+    <div id="invite-result" data-result-success="invite sent" data-result-fail="failed to send invite email" data-result-error="invalid email address"></div>
+</div>
+
+<script>
+    StackExchange.ready(function() {
+        $('#invite-send').click(function() {
+            var inviteButton = $(this);
+            inviteButton.attr('disabled', 'disabled');
+            var statusDiv = $('#invite-result');
+            var sendAs = 'd';
+            if ($('#invite-send-as-real-name').is(':checked')) sendAs = 'r';
+            statusDiv.html('');
+
+            StackExchange.helpers.addSpinner(statusDiv);
+            $.ajax({
+                type: 'POST',
+                url: '/users/send-invite',
+                dataType: 'json',
+                data: { 'fkey': StackExchange.options.user.fkey, 'email': $("#invite-email").val(), 'message': $("#invite-body").val(), 'sendas': sendAs },
+                success: function (result) {
+                    if (result.success === true) statusDiv.text(statusDiv.data('result-success'));
+                    else if (result.success === false) statusDiv.html(statusDiv.data('result-error'));
+                },
+                error: function(res, textStatus, errorThrown) {
+                    StackExchange.helpers.showErrorMessage(jForm, statusDiv.data('result-fail'));
+                },
+                complete: function () {
+                    StackExchange.helpers.removeSpinner();
+                    $("#invite-email").val('');
+                    $("#invite-body").val('');
+                    inviteButton.removeAttr('disabled');
+                }
+            });
+        });
+    });
+</script>
+<div class="module" id="chat-feature">
+    
+
+    
+<h4><a href="http://chat.stackexchange.com" id="h-chat-link">Visit Chat</a></h4>
+
+<div class="related" id="ad502-rooms"></div>
+<script>
+// <!--
+    StackExchange.ready(
+    function () {
+        var options = {
+            chatUrl: 'http://chat.stackexchange.com',
+            reloadUrl: '/api/recent-chat',
+            preloadData: {"activeUsers":155,"activeRooms":67,"rooms":[{"name":"Embedded Systems","id":14632,"lastPost":1439498320,"posts":469,"users":[{"name":"Gilles","id":240,"emailhash":"!http://i.stack.imgur.com/Xdc7f.jpg?s=128\u0026g=1","lastPost":1439498320},{"name":"Scott Seidman","id":49216,"emailhash":"a730e9b642c9cd38f567ea810b63d53c","lastPost":1439498228},{"name":"Niall C.","id":568,"emailhash":"c310c0454f3734954e59094072c3ddad","lastPost":1438750327},{"name":"David Freitag","id":85545,"emailhash":"354a54b76a662bf37e5ac4f788e211a0","lastPost":1438123182},{"name":"Dom","id":96958,"emailhash":"cc587b97a445c48bbbcaa6dfb3a76ea0","lastPost":1438115636}],"messages":[{"date":1439498320,"user":"Gilles","userid":240}],"singleImage":false,"tags":[]}]} 
+        };
+
+        StackExchange.chatAd.init(options);
+    });
+// -->
+</script>
+
+</div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="http://embedded.stackexchange.com/q/23" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">2</div>
+	</a>
+	<a href="http://embedded.stackexchange.com/questions/23/how-to-get-a-dump-of-serial-debug-output" class="question-hyperlink">How to get a dump of serial debug output?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="http://embedded.stackexchange.com/q/2" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">10
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/2/avoid-overwriting-arduino-bootloader" class="question-hyperlink">Avoid overwriting Arduino bootloader</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/23" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/23/how-to-get-a-dump-of-serial-debug-output" class="question-hyperlink">How to get a dump of serial debug output?</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/67069/campaigns-are-unsatisfying-when-made-up-or-slow-when-pre-written-how-do-we-fix" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Campaigns are unsatisfying when made-up or slow when pre-written. How do we fix that?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1395766/find-the-definite-integral" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Find the definite integral
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/99184/how-did-starfleet-have-an-admiralty-if-it-didnt-have-a-fleet" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How did Starfleet have an admiralty if it didn&#39;t have a fleet?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/20007/what-wrote-this-apology-letter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What wrote this apology letter?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-gis" title="Geographic Information Systems Stack Exchange"></div><a href="http://gis.stackexchange.com/questions/158197/why-do-i-get-correct-area-and-intersect-area-when-use-wrong-projection" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:79 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do I get correct area and intersect area when use wrong projection?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/51730/tenant-wants-to-pay-rent-with-eft" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Tenant wants to pay rent with EFT
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/96664/doesnt-hashing-passwords-server-side-mean-a-compromised-website-could-leave-pas" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Doesn&#39;t hashing passwords server side mean a compromised website could leave passwords vulnerable?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/22563/perfect-weapon-for-two-elbow-creature" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Perfect weapon for two-elbow creature
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/64231/what-is-soons" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is &quot;soon&#39;s&quot;?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/231698/how-to-automatically-go-to-the-next-level" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to automatically go to the next level?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/200173/relativistic-energy" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Relativistic Energy
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/200097/flat-throw-vs-45-degree-throw" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Flat throw vs 45 degree throw
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/18865/why-do-farmers-register-their-fields-as-airports" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do farmers register their fields as airports
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/99179/how-much-energy-could-the-enterprise-d-produce" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How much energy could the Enterprise-D produce?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/100754/rpg-character-builder" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    RPG Character Builder
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-judaism" title="Mi Yodeya"></div><a href="http://judaism.stackexchange.com/questions/62001/name-two-kids-the-same-name" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:248 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Name two kids the same name?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/19870/nine-gangsters-and-a-gold-bar" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Nine gangsters and a gold bar
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/96713/how-does-windows-10-allow-microsoft-to-spy-on-you" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How does Windows 10 allow Microsoft to spy on you?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/261273/gaps-between-columns-are-too-wide-in-latex-or-lyx" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Gaps between columns are too wide in Latex (or Lyx)
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-buddhism" title="Buddhism Stack Exchange"></div><a href="http://buddhism.stackexchange.com/questions/10763/if-a-buddhist-should-not-kill-a-mouse-living-in-their-home-what-justification-d" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:565 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If a buddhist should not kill a mouse living in their home, what justification do they have to rid themselves of a parasite such tapeworms
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/22417/how-could-a-time-traveller-communicate-with-neanderthals" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How Could A Time Traveller Communicate With Neanderthals?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-cooking" title="Seasoned Advice"></div><a href="http://cooking.stackexchange.com/questions/59807/is-sealing-in-the-flavor-an-actual-thing" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:49 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is &quot;sealing in the flavor&quot; an actual thing?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div><a href="http://mathematica.stackexchange.com/questions/91558/mathlink-versus-wstp-program" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:387 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    MathLink versus WSTP program
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/99206/first-uses-of-names-having-power" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    First uses of names having power?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="http://embedded.stackexchange.com/questions/7/how-to-boot-olinuxino-from-a-usb-stick.html#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://embedded.stackexchange.com/feeds/question/7" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/7/ivc/1065');});
+</script>
+<noscript>
+    <div><img src="http://embedded.stackexchange.com/posts/7/ivc/1065" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://embedded.stackexchange.com/tour">tour</a>
+                    <a href="http://embedded.stackexchange.com/help">help</a>
+                    <a href="http://blog.stackexchange.com?blb=1">blog</a>
+                        <a href="http://chat.stackexchange.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="http://embedded.stackexchange.com/contact">contact us</a></b>
+                        <b><a href="http://meta.embedded.stackexchange.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.8.13.688
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Embedded Systems Stack Exchange works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-24', '.stackexchange.com');
+        
+        
+        ga('set', 'dimension2', '|bootloader|olinuxino|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>            
+    </body>
+</html>

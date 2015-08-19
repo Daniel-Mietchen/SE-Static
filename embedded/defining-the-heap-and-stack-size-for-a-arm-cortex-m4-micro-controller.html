@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/QAPage">
+<head>
+
+<title>Defining the Heap and Stack Size for a ARM Cortex-M4 Micro-controller? - Embedded Systems Stack Exchange</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/embedded/img/favicon.ico?v=b1339aa5fb6c">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/embedded/img/apple-touch-icon.png?v=74a50e8f6eeb">
+    <link rel="search" type="application/opensearchdescription+xml" title="Embedded Systems Stack Exchange" href="http://embedded.stackexchange.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="embedded.stackexchange.com"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/embedded/img/apple-touch-icon.png?v=74a50e8f6eeb&a" />
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Defining the Heap and Stack Size for a ARM Cortex-M4 Micro-controller?" />
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have been working on and off on small embedded systems project on and off. Some of these projects used an ARM Cortex-M4 base processor. In the project folder there is a startup.s file. Inside tha..." />
+    <meta property="og:url" content="http://embedded.stackexchange.com/questions/125/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller"/>
+    <link rel="canonical" href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html" />
+
+    
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdn.sstatic.net/Js/stub.en.js?v=f1e183e138a3"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.sstatic.net/embedded/all.css?v=2ad427d961ef">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Defining the Heap and Stack Size for a ARM Cortex-M4 Micro-controller?&#39;" href="http://embedded.stackexchange.com/feeds/question/125">
+            <meta name="twitter:app:country" content="US" />
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:iphone" content="871299723" />
+            <meta name="twitter:app:url:iphone" content="se-zaphod://embedded.stackexchange.com/questions/125/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller" />
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS" />
+            <meta name="twitter:app:id:ipad" content="871299723" />
+            <meta name="twitter:app:url:ipad" content="se-zaphod://embedded.stackexchange.com/questions/125/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller" />
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://embedded.stackexchange.com/questions/125/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:125});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('627', '125');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.ready(function () {
+            StackExchange.realtime.init('wss://qa.sockets.stackexchange.com,ws://qa.sockets.stackexchange.com');
+            StackExchange.realtime.subscribeToReputationNotifications('627');
+                StackExchange.realtime.subscribeToTopBarNotifications('627');
+        });
+    </script>
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1439500782,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":false,"domain":"stacksnippets.net"},"site":{"name":"Embedded Systems Stack Exchange","description":"Q&A for developers of embedded hardware and software systems","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdsB7sSAAAAAAzjgEF_Hd8vXv-C42sa_KyofaGR","recaptchaAudioLang":"en","enableNewTagCreationWarning":false,"insertSpaceAfterNameTabCompletion":false,"globalAuthDisabled":true},"user":{"fkey":"9597b610caf80e1d0808012ba42aedd6","isAnonymous":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"c35b9a1e9808","js/moderator.en.js":"4926bb61c50e","js/full-anon.en.js":"1d5cd3b58d12","js/full.en.js":"f6074df299ce","js/wmd.en.js":"7a996ac7795a","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"4274196afa9d","js/help.en.js":"ce2977cf4348","js/tageditor.en.js":"c84618a71b61","js/tageditornew.en.js":"a13ff16edbe4","js/inline-tag-editing.en.js":"06a39d658ac8","js/revisions.en.js":"a80e312b9d39","js/review.en.js":"147cf9193349","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"6e0156aecdd3","js/explore-qlist.en.js":"b5ce0a2a9966","js/events.en.js":"58a0c4edcdee","js/keyboard-shortcuts.en.js":"13e3264f7ae5","js/external-editor.en.js":"20a8e0ae5ded","js/external-editor.en.js":"20a8e0ae5ded"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+</head>
+<body class="question-page new-topbar">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://embedded.stackexchange.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackexchange.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:6 })"
+>chat</a>
+                    <a href="http://blog.stackexchange.com" class="js-gps-track"     data-gps-track="site_switcher.click({ item_type:7 })"
+>blog</a>
+            </div>
+
+
+
+
+    <a href="http://embedded.stackexchange.com/"
+       class="current-site-link site-link js-gps-track"
+       data-id="627"
+       data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-embedded" title="Embedded Systems"></div>
+        Embedded Systems
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.embedded.stackexchange.com"
+       class="site-link js-gps-track"
+       data-id="628"
+       data-gps-track="
+            site.switch({ target_site:628, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-embeddedmeta" title="Embedded Systems Meta"></div>
+        Embedded Systems Meta
+    </a>
+
+                </li>
+                    </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://embedded.stackexchange.com/users/signup?returnurl=http%3a%2f%2fembedded.stackexchange.com%2fquestions%2f125%2fdefining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:10 })"
+>Sign up</a> or <a href="https://embedded.stackexchange.com/users/login?returnurl=http%3a%2f%2fembedded.stackexchange.com%2fquestions%2f125%2fdefining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller" class="login-link js-gps-track"     data-gps-track="site_switcher.click({ item_type:11 })"
+>log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/"
+               class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track"
+               data-gps-track="site_switcher.show"
+               title="A list of all 149 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                <span class="topbar-menu-links">
+                                <a href="https://embedded.stackexchange.com/users/signup?returnurl=http%3a%2f%2fembedded.stackexchange.com%2fquestions%2f125%2fdefining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller" class="login-link">sign up</a>
+                                <a href="https://embedded.stackexchange.com/users/login?returnurl=http%3a%2f%2fembedded.stackexchange.com%2fquestions%2f125%2fdefining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller" class="login-link">log in</a>
+
+                        <a href="http://embedded.stackexchange.com/tour">tour</a>
+                            <a href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://embedded.stackexchange.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://embedded.stackexchange.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.embedded.stackexchange.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://embedded.stackexchange.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://embedded.stackexchange.com/" >
+                    Embedded Systems
+                        <span class="beta-title">beta</span>
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://embedded.stackexchange.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://embedded.stackexchange.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://embedded.stackexchange.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://embedded.stackexchange.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://embedded.stackexchange.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="http://embedded.stackexchange.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+                <div id="system-message-temp">
+                    <script>
+                        var curSystemMessage = 'This site will be closing on <a href="http:\/\/meta.embedded.stackexchange.com\/questions\/69\/closing-this-site-on-friday-august-14">August 14<\/a>.';
+                        $('#system-message-temp').html(curSystemMessage).attr('id', 'system-message');
+                    </script>
+                </div>
+
+
+        <div id="content">
+            
+
+<div itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/embedded/img/apple-touch-icon.png?v=74a50e8f6eeb">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="http://embedded.stackexchange.com/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">&times;</a></span>
+        </span>
+        <div id="blurb">
+            Embedded Systems Stack Exchange is a question and answer site for developers of embedded hardware and software systems. It&#39;s 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+                <h1 itemprop="name"><a href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html" class="question-hyperlink">Defining the Heap and Stack Size for a ARM Cortex-M4 Micro-controller?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="125"  id="question">
+
+        <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="125">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">7</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html#" title="This is a favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>1</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have been working on and off on small embedded systems project on and off. Some of these projects used an ARM Cortex-M4 base processor. In the project folder there is a <strong>startup.s</strong> file. Inside that file I noted the following two command lines</p>
+
+<pre><code>;******************************************************************************
+;
+; &lt;o&gt; Stack Size (in Bytes) &lt;0x0-0xFFFFFFFF:8&gt;
+;
+;******************************************************************************
+Stack   EQU     0x00000400
+
+;******************************************************************************
+;
+; &lt;o&gt; Heap Size (in Bytes) &lt;0x0-0xFFFFFFFF:8&gt;
+;
+;******************************************************************************
+Heap    EQU     0x00000000
+</code></pre>
+
+<hr>
+
+<p><strong>Question:</strong> How does one define the size of the <strong>heap</strong> and <strong>stack</strong> for a micro-controller? Is there any specific infomation in the datasheet to guide to arrive at the correct value? If so, what should one look for in the datasheet.</p>
+
+<hr>
+
+<p><strong>References:</strong> </p>
+
+<ul>
+<li><a href="http://community.arm.com/docs/DOC-9701">Decoding the Startup file for ARM Cortex M4</a></li>
+<li><a href="https://www.lpcware.com/content/project/lightweight-ip-lwip-networking-stack/configuring-lwip/default-stack/heap-sizes">Default stack/heap sizes</a></li>
+</ul>
+    </div>
+    <div class="post-taglist">
+        <a href="http://embedded.stackexchange.com/questions/tagged/cortex-m4" class="post-tag" title="show questions tagged &#39;cortex-m4&#39;" rel="tag">cortex-m4</a> <a href="http://embedded.stackexchange.com/questions/tagged/arm" class="post-tag" title="show questions tagged &#39;arm&#39;" rel="tag">arm</a> <a href="http://embedded.stackexchange.com/questions/tagged/bare-metal" class="post-tag" title="show questions tagged &#39;bare-metal&#39;" rel="tag">bare-metal</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://embedded.stackexchange.com/q/125" title="short permalink to this question" class="short-link" id="link-post-125">share</a><span class="lsep">|</span><a href="http://embedded.stackexchange.com/posts/125/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://embedded.stackexchange.com/posts/125/revisions" title="show all edits to this post">edited <span title="2015-08-01 18:27:00Z" class="relativetime">Aug 1 at 18:27</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2015-08-01 13:39:10Z" class="relativetime">Aug 1 at 13:39</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/122/mahendra-gunawardena"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/7f7128e0b317bb2cbb9523b7c886c118?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/122/mahendra-gunawardena">Mahendra Gunawardena</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">386</span><span title="14 bronze badges"><span class="badge3"></span><span class="badgecount">14</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-125" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-125" data-rep=1 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								3 Answers
+                                <span style="display:none;" itemprop="answerCount">3</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://embedded.stackexchange.com/questions/125/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active">active</a>
+        <a href="http://embedded.stackexchange.com/questions/125/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest">oldest</a>
+        <a class="youarehere" href="http://embedded.stackexchange.com/questions/125/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="127"></a>
+<div id="answer-127" class="answer accepted-answer" data-answerid="127"  itemscope itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="127">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">5</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The sizes of the stack and heap are defined by your application, not anywhere in the microcontroller's datasheet.</p>
+
+<h1>The stack</h1>
+
+<p>The stack is used to store the values of local variables inside of functions, the previous values of CPU registers used for local variables (so they can be restored on exit from the function), the program address to return to when leaving those functions, plus some overhead for management of the stack itself. </p>
+
+<p>When developing an embedded system, you estimate the maximum call depth you expect to have, add up the sizes of all the local variables in the functions in that hierarchy, then add some padding to allow for the overhead mentioned above, then add some more for any interrupts that might occur during execution of your program.</p>
+
+<p>An alternative estimation method (where RAM isn't constrained) is to allocate far more stack space than you'll ever need, fill the stack with a sentinel value, then monitor how much you actually use during execution. I've seen debug versions of C language runtimes that will do this for you automatically. Then, when you've finished developing, you can reduce the stack size if you want.</p>
+
+<h1>The heap</h1>
+
+<p>Calculating the size of the heap you need can be a trickier. The heap is used for dynamically allocated variables, so if you use <code>malloc()</code> and <code>free()</code> in a C language program, or <code>new</code> and <code>delete</code> in C++, that's where those variables live. </p>
+
+<p>However, in C++ especially, there can be some hidden dynamic memory allocation going on. For example, if you have statically allocated objects, the language requires that their destructors be called when the program exits. I'm aware of at least one runtime where the addresses of the destructors are stored in a dynamically allocated linked list.</p>
+
+<p>So to estimate the size of the heap you need, look at all the dynamic memory allocation in each path through your call tree, calculate the maximum and add some padding. The language runtime may provide diagnostics that you can use to monitor total heap usage, fragmentation, etc.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://embedded.stackexchange.com/a/127" title="short permalink to this answer" class="short-link" id="link-post-127">share</a><span class="lsep">|</span><a href="http://embedded.stackexchange.com/posts/127/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2015-08-01 14:06:44Z" class="relativetime">Aug 1 at 14:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/8/niall-c"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c310c0454f3734954e59094072c3ddad?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/8/niall-c">Niall C.</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">811</span><span title="17 bronze badges"><span class="badge3"></span><span class="badgecount">17</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-127" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-173" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Thank you for the response, I like to how to determine the specific number such as 0x00400 and so forth</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/122/mahendra-gunawardena"
+                       title="386 reputation"
+                       class="comment-user owner">Mahendra Gunawardena</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-01 18:54:51Z" class="relativetime-clean">Aug 1 at 18:54</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-369" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I have transferred this question to engineering SE Can you please copy and past your answer here the link to the question <a href="http://engineering.stackexchange.com/questions/3898/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller">Defining the Heap and Stack Size for a ARM Cortex-M4 Micro-controller?</a></span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/122/mahendra-gunawardena"
+                       title="386 reputation"
+                       class="comment-user owner">Mahendra Gunawardena</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-12 11:27:52Z" class="relativetime-clean">yesterday</span></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-127" data-rep=1 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="126"></a>
+<div id="answer-126" class="answer" data-answerid="126"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="126">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Stack and heap are software concepts, not hardware concepts. What the hardware provides is memory. Defining zones of memory, one of which is called “stack” and one of which is called “heap”, is a choice of your program.</p>
+
+<p>The hardware does help with stacks. Most architectures have a dedicated register called the stack pointer. Its intended use is that when the program makes a function call, the function parameters and the return address are pushed to the stack, and they are popped when the function terminates and returns to its caller. Pushing onto the stack means writing at the address given by the stack pointer and decrementing the stack pointer accordingly (or incrementing, depending in which direction the stack grows). Popping means incrementing (or decrementing) the stack pointer; the return address is read from the address given by the stack pointer.</p>
+
+<p>Some architectures (not ARM though) have a subroutine call instruction that combines a jump with writing to the address given by the stack pointer, and a subroutine return instruction that combines reading from the address given by the stack pointer and jumping to this address. On ARM, the address saving and restoring is done in the LR register, the call and return instructions do not use the stack pointer. There are however instructions to facilitate writing or reading multiple registers to the address given by the stack pointer, to push and pop function arguments.</p>
+
+<p>To choose the heap and stack size, the only relevant information from the hardware is how much total memory you have. You then make your choice depending on what you want to store in memory (allowing for code, static data, and other programs).</p>
+
+<p>A program would typically uses these constants to initialize some data in memory that will be used by the rest of the code, such as the address of the top of the stack, maybe a value somewhere to check for stack overflows, bounds for the heap allocator, etc.</p>
+
+<p>In <a href="http://community.arm.com/docs/DOC-9701" rel="nofollow">the code you're looking at</a>, the <code>Stack_Size</code> constant is used to reserve a block of memory in the code area (via a <code>SPACE</code> directive in ARM assembly). The upper address of this block is given the label <code>__initial_sp</code>, and it is stored in the vector table (the processor uses this entry to set SP after a software reset) as well as exported for use in other source files. The <code>Heap_Size</code> constant is similarly used to reserve a block of memory and labels to its boundaries (<code>__heap_base</code> and <code>__heap_limit</code>) are exported for use in other source files.</p>
+
+<blockquote>
+<pre><code>; Amount of memory (in bytes) allocated for Stack
+; Tailor this value to your application needs
+; &lt;h&gt; Stack Configuration
+;   &lt;o&gt; Stack Size (in Bytes) &lt;0x0-0xFFFFFFFF:8&gt;
+; &lt;/h&gt;
+
+Stack_Size      EQU     0x00000400
+
+                AREA    STACK, NOINIT, READWRITE, ALIGN=3
+Stack_Mem       SPACE   Stack_Size
+__initial_sp
+
+
+; &lt;h&gt; Heap Configuration
+;   &lt;o&gt;  Heap Size (in Bytes) &lt;0x0-0xFFFFFFFF:8&gt;
+; &lt;/h&gt;
+
+Heap_Size       EQU     0x00000200
+
+                AREA    HEAP, NOINIT, READWRITE, ALIGN=3
+__heap_base
+Heap_Mem        SPACE   Heap_Size
+__heap_limit
+
+…
+__Vectors       DCD     __initial_sp               ; Top of Stack
+                DCD     Reset_Handler              ; Reset Handler
+                DCD     NMI_Handler                ; NMI Handler
+
+…
+
+                 EXPORT  __initial_sp
+                 EXPORT  __heap_base
+                 EXPORT  __heap_limit
+</code></pre>
+</blockquote>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://embedded.stackexchange.com/a/126" title="short permalink to this answer" class="short-link" id="link-post-126">share</a><span class="lsep">|</span><a href="http://embedded.stackexchange.com/posts/126/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://embedded.stackexchange.com/posts/126/revisions" title="show all edits to this post">edited <span title="2015-08-01 21:14:40Z" class="relativetime">Aug 1 at 21:14</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/8/niall-c"><div class="gravatar-wrapper-32"><img src="https://www.gravatar.com/avatar/c310c0454f3734954e59094072c3ddad?s=32&amp;d=identicon&amp;r=PG" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/8/niall-c">Niall C.</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">811</span><span title="17 bronze badges"><span class="badge3"></span><span class="badgecount">17</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-08-01 14:06:14Z" class="relativetime">Aug 1 at 14:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/55/gilles"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/Xdc7f.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/55/gilles">Gilles</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">459</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="15 bronze badges"><span class="badge3"></span><span class="badgecount">15</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-126" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-174" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Do you know how those values 0x00200 and 0x000400 are determined</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/122/mahendra-gunawardena"
+                       title="386 reputation"
+                       class="comment-user owner">Mahendra Gunawardena</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-01 19:26:12Z" class="relativetime-clean">Aug 1 at 19:26</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-175" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@MahendraGunawardena It&#39;s up to you to determine them, based on what your program needs. Niall&#39;s answer gives a few tips.</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/55/gilles"
+                       title="459 reputation"
+                       class="comment-user">Gilles</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-01 19:31:41Z" class="relativetime-clean">Aug 1 at 19:31</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-371" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I have transferred this question to engineering SE Can you please copy and past your answer here the link to the question <a href="http://engineering.stackexchange.com/questions/3898/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller">Defining the Heap and Stack Size for a ARM Cortex-M4 Micro-controller?</a></span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/122/mahendra-gunawardena"
+                       title="386 reputation"
+                       class="comment-user owner">Mahendra Gunawardena</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-12 11:29:17Z" class="relativetime-clean">yesterday</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-373" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@MahendraGunawardena I think this is more of an SO question than an Engineering.SE question, but ok.</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/55/gilles"
+                       title="459 reputation"
+                       class="comment-user">Gilles</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-12 13:28:14Z" class="relativetime-clean">yesterday</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-384" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I agree, the issue with SO is that embedded questions go unanswered or closed for the most part. That is why I supported ES. I was thinking Engineering SE is still new (200+ days) there is only 7 question tag as Embedded. In the absence of ES this might be a good place to create mini ES community among the ES enthusiast. This will give us a opportunity to evaluate if ES is a large enough topic to have its own site. What do you think?</span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/122/mahendra-gunawardena"
+                       title="386 reputation"
+                       class="comment-user owner">Mahendra Gunawardena</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-12 23:10:03Z" class="relativetime-clean">22 hours ago</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-126" data-rep=1 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+
+  
+<a name="130"></a>
+<div id="answer-130" class="answer" data-answerid="130"  itemscope itemtype="http://schema.org/Answer">
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="130">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>In addition to the other answers, I'd like to add that when carving up RAM between stack and heap space, that you also need to consider the space for static non-constant data (e.g. file globals, function statics, and program-wide globals from a C perspective, and probably others for C++).</p>
+
+<h2>How stack/heap allocation works</h2>
+
+<p>It is worth noting that the startup assembly file is one way of defining the region; the toolchain (both your build environment and run-time environment) mostly care about the symbols which define the start of stackspace (used to store the initial stack pointer in the Vector Table) and the start and end of heap space (used by the dynamic memory allocator, typically provided by your libc)</p>
+
+<p>In OP's example, only 2 symbols are defined, a size of stack at 1kiB and a size of heap at 0B. These values get used elsewhere to actually produce the stack and heap spaces</p>
+
+<p>In @Gilles example, the sizes are defined <em>and used</em> in the assembly file to set a stack space starting wherever and lasting the size, identified by the symbol Stack_Mem and sets a label __initial_sp at the end. Likewise for the heap, where the space is the symbol Heap_Mem (0.5kiB in size), but with labels at the beginning and end (__heap_base and __heap_limit).</p>
+
+<p>These get processed by the linker, which won't allocate anything within the stack space and heap space because that memory is occupied (by Stack_Mem and Heap_Mem symbols), but it can place those memories and all of the globals wherever it needs. The labels end up being symbols with no length at the given addresses. The __initial_sp is used directly for the vector table at link time, and the __heap_base and __heap_limit by your runtime code. The actual addresses of the symbols are assigned by the linker based on where it placed them.</p>
+
+<p>As I aluded to above, these symbols don't actually have to come from a startup.s file. They can come from your linker configuration (Scatter Load file in Keil, linkerscript in GNU), and in those you can have finer grained control over placement. For example, you can force the stack to be at the beginning or end of RAM, or keep your globals away from the heap, or whatever you want. You can even specify that the HEAP or STACK just occupy whatever RAM is left over after globals are placed. NOTE though that you have to be careful that adding more static variables that your other memory will decrease.</p>
+
+<p>However, each toolchain is different, and how to write the configuration file and what symbols your dynamic memory allocator will use will have to come from the documentation of your particular environment.</p>
+
+<h2>Stack Sizing</h2>
+
+<p>As to how to determine stack size, many toolchains can give you a maximum stack depth by analyzing the function call trees of your program, IF you don't use recursion or function pointers. If you do use those, estimating a stack size and pre-filling it with cardinal values (perhaps via the entry function before main) and then checking after your program has run for a while where the max depth was (which is where the cardinal values end). If you have fully exercised your program to its limits, you'll know fairly accurately whether you can shrink the stack or, if your program crashes or no cardinal values are left, that you need to increase the stack and try again.</p>
+
+<h2>Heap Sizing</h2>
+
+<p>Determining heap size is a bit more application dependant. If you only do dynamic allocation during startup, you can just add up the space required in your startup code (plus some overhead for memory management). If you have access to the source of your memory manager, you can know exactly what the overhead is, and possibly even write code to walk the memory to give you usage information. For applications that need dynamic runtime memory (e.g. allocating buffers for inbound ethernet frames) the best I can suggest is to carefully hone your stacksize and give the Heap everything that is left over after stack and statics.</p>
+
+<h2>Final note (RTOS)</h2>
+
+<p>OP's question was tagged for bare-metal, but I want to add a note for RTOSes. Often (always?) each task/process/thread (I'll just write task here on out for simplicity) will be assigned a stack size when the task is created, an in addition to task stacks, there will likely be a small OS stack (used for interrupts and such)</p>
+
+<p>The task accounting structures and the stacks have to be allocated from somewhere, and this will often be from the overall heap space of your application. In these instances, your initial stack size often won't matter, because the OS will only use it during initialization. I have seen, for example, specifying ALL remaining space during linking be allocated to the HEAP and placing the initial stack pointer at the end of the heap to grow into the heap, knowing that the OS will allocate starting from the beginning of the heap and will allocate the OS stack just before abandoning the initial_sp stack. Then all of the space is used for allocating task stacks and other dynamically allocated memory.</p>
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://embedded.stackexchange.com/a/130" title="short permalink to this answer" class="short-link" id="link-post-130">share</a><span class="lsep">|</span><a href="http://embedded.stackexchange.com/posts/130/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-08-02 02:26:59Z" class="relativetime">Aug 2 at 2:26</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://embedded.stackexchange.com/users/39/john-om"><div class="gravatar-wrapper-32"><img src="http://i.stack.imgur.com/A61qq.jpg?s=32&amp;g=1" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://embedded.stackexchange.com/users/39/john-om">John O&#39;M.</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">371</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-130" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0"
+                       data-canpost="false"
+                       data-cansee="true"
+                       data-comments-unavailable="false"
+                       data-addlink-disabled="true">
+
+
+
+    <tr id="comment-370" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I have transferred this question to engineering SE Can you please copy and past your answer here the link to the question <a href="http://engineering.stackexchange.com/questions/3898/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller">Defining the Heap and Stack Size for a ARM Cortex-M4 Micro-controller?</a></span>
+                &ndash;&nbsp;
+                    <a href="http://embedded.stackexchange.com/users/122/mahendra-gunawardena"
+                       title="386 reputation"
+                       class="comment-user owner">Mahendra Gunawardena</a>
+                <span class="comment-date" dir="ltr"><span title="2015-08-12 11:29:04Z" class="relativetime-clean">yesterday</span></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-130" data-rep=1 data-anon=true>
+
+                <a class="js-add-link comments-link disabled-link "
+                   title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."
+                   >add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </table>
+</div>
+							<h2 class="bottom-notice">You must <a href="http://embedded.stackexchange.com/users/login?returnurl=%2fquestions%2f125">log in</a> to answer this question.</h2>
+				
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you&#39;re looking for?							Browse other questions tagged <a href="http://embedded.stackexchange.com/questions/tagged/cortex-m4" class="post-tag" title="show questions tagged &#39;cortex-m4&#39;" rel="tag">cortex-m4</a> <a href="http://embedded.stackexchange.com/questions/tagged/arm" class="post-tag" title="show questions tagged &#39;arm&#39;" rel="tag">arm</a> <a href="http://embedded.stackexchange.com/questions/tagged/bare-metal" class="post-tag" title="show questions tagged &#39;bare-metal&#39;" rel="tag">bare-metal</a> .						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2015-08-01 13:39:10Z"><b>12 days ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>73 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://embedded.stackexchange.com/questions/125/defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller?lastactivity" class="lastactivity-link" title="2015-08-02 02:26:59Z">11 days ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr />
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackexchange.com/2015/08/Stack-Spotlight-Bethany-Marzewski/" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackexchange.com/2015/08/Stack-Spotlight-Bethany-Marzewski/" class="question-hyperlink">Stack Spotlight: Bethany Marzewski</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>			
+			<div class="module newuser"> 
+    <h4>Invite Fellow Experts</h4>
+    email a private beta invite to:<br>
+    <input type="text" name="invite-email" id="invite-email" style="width:195px" />
+    <p>
+    </p>
+    message (optional):<br>
+    <textarea name="invite-body" id="invite-body" style="width:195px"></textarea>
+    <input type="button" value="send invite" id="invite-send" />
+    <div id="invite-result" data-result-success="invite sent" data-result-fail="failed to send invite email" data-result-error="invalid email address"></div>
+</div>
+
+<script>
+    StackExchange.ready(function() {
+        $('#invite-send').click(function() {
+            var inviteButton = $(this);
+            inviteButton.attr('disabled', 'disabled');
+            var statusDiv = $('#invite-result');
+            var sendAs = 'd';
+            if ($('#invite-send-as-real-name').is(':checked')) sendAs = 'r';
+            statusDiv.html('');
+
+            StackExchange.helpers.addSpinner(statusDiv);
+            $.ajax({
+                type: 'POST',
+                url: '/users/send-invite',
+                dataType: 'json',
+                data: { 'fkey': StackExchange.options.user.fkey, 'email': $("#invite-email").val(), 'message': $("#invite-body").val(), 'sendas': sendAs },
+                success: function (result) {
+                    if (result.success === true) statusDiv.text(statusDiv.data('result-success'));
+                    else if (result.success === false) statusDiv.html(statusDiv.data('result-error'));
+                },
+                error: function(res, textStatus, errorThrown) {
+                    StackExchange.helpers.showErrorMessage(jForm, statusDiv.data('result-fail'));
+                },
+                complete: function () {
+                    StackExchange.helpers.removeSpinner();
+                    $("#invite-email").val('');
+                    $("#invite-body").val('');
+                    inviteButton.removeAttr('disabled');
+                }
+            });
+        });
+    });
+</script>
+<div class="module" id="chat-feature">
+    
+
+    
+<h4><a href="http://chat.stackexchange.com" id="h-chat-link">Visit Chat</a></h4>
+
+<div class="related" id="ad502-rooms"></div>
+<script>
+// <!--
+    StackExchange.ready(
+    function () {
+        var options = {
+            chatUrl: 'http://chat.stackexchange.com',
+            reloadUrl: '/api/recent-chat',
+            preloadData: {"activeUsers":158,"activeRooms":66,"rooms":[{"name":"Embedded Systems","id":14632,"lastPost":1439498320,"posts":469,"users":[{"name":"Gilles","id":240,"emailhash":"!http://i.stack.imgur.com/Xdc7f.jpg?s=128\u0026g=1","lastPost":1439498320},{"name":"Scott Seidman","id":49216,"emailhash":"a730e9b642c9cd38f567ea810b63d53c","lastPost":1439498228},{"name":"Niall C.","id":568,"emailhash":"c310c0454f3734954e59094072c3ddad","lastPost":1438750327},{"name":"David Freitag","id":85545,"emailhash":"354a54b76a662bf37e5ac4f788e211a0","lastPost":1438123182},{"name":"Dom","id":96958,"emailhash":"cc587b97a445c48bbbcaa6dfb3a76ea0","lastPost":1438115636}],"messages":[{"date":1439498320,"user":"Gilles","userid":240}],"singleImage":false,"tags":[]}]} 
+        };
+
+        StackExchange.chatAd.init(options);
+    });
+// -->
+</script>
+
+</div>
+			  
+    
+            
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="http://embedded.stackexchange.com/q/1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">8
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/1/how-do-i-get-iar-embedded-workbench-to-ignore-my-boot-loader-when-debugging" class="question-hyperlink">How do I get IAR Embedded Workbench to ignore my boot-loader when debugging?</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/27" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/27/low-latency-signal-processing-on-cortex-m4" class="question-hyperlink">Low latency signal processing on cortex-m4</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/34" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/34/how-do-i-capture-and-view-itm-trace-information-on-a-cortex-m4-mcu" class="question-hyperlink">How do I capture and view ITM trace information on a Cortex-M4 MCU?</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/36" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">6
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/36/arm-cortex-m4-best-way-to-integrate-external-ram-into-the-design" class="question-hyperlink">ARM Cortex M4 - best way to integrate external RAM into the design</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/38" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">12
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/38/how-can-i-know-the-cause-of-a-hard-fault-exception-on-an-arm-cortex-m3" class="question-hyperlink">How can I know the cause of a hard fault exception on an ARM Cortex-M3?</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/75" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">5
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/75/why-are-words-bit-shifted-for-an-atmel-sam4s-spi-slave" class="question-hyperlink">Why are words bit-shifted for an Atmel SAM4S SPI slave?</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/80" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">5
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/80/missing-mcpu-while-compiling-a-netmf-solution-for-stm32f4-with-gcc" class="question-hyperlink">Missing -mcpu while compiling a .NETMF solution for STM32F4 with gcc</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/118" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">5
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/118/how-could-stack-on-ram-get-fewer-data-cache-misses-than-stack-on-tcm" class="question-hyperlink">How could stack on RAM get fewer data cache misses than stack on TCM?</a>
+</div>
+<div class="spacer">
+<a href="http://embedded.stackexchange.com/q/119" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">7
+    </div>
+</a><a href="http://embedded.stackexchange.com/questions/119/how-do-thumb-instructions-compare-to-arm-instructions-for-performance" class="question-hyperlink">How do Thumb instructions compare to ARM instructions for performance?</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" 
+           class="js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li >
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/96761/have-computer-criminals-been-known-to-exploit-easily-edited-websites-like-wikipe" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Have computer criminals been known to exploit easily edited websites like wikipedia to embed malicious scripts?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/96664/doesnt-hashing-passwords-server-side-mean-a-compromised-website-could-leave-pas" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Doesn&#39;t hashing passwords server side mean a compromised website could leave passwords vulnerable?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/266737/what-is-the-proper-term-for-when-an-animal-is-pregnant-with-eggs-instead-of-li" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the proper term for when an animal is &quot;pregnant&quot; with eggs instead of live young?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="http://stackoverflow.com/questions/31993377/why-is-hasnext-false-but-hasnextline-is-true" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is hasNext() False, but hasNextLine() is True?
+                </a>
+
+            </li>
+            <li >
+                <div class="favicon favicon-blender" title="Blender Stack Exchange"></div><a href="http://blender.stackexchange.com/questions/35652/need-to-get-a-360-view-of-the-object-using-cameras" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:502 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Need to get a 360 view of the object using cameras
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1395766/find-the-definite-integral" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Find the definite integral
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-judaism" title="Mi Yodeya"></div><a href="http://judaism.stackexchange.com/questions/62001/name-two-kids-the-same-name" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:248 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Name two kids the same name?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/18843/what-does-it-mean-when-an-airplane-has-the-super-call-sign" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does it mean when an airplane has the &quot;super&quot; call sign?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/99193/plans-for-star-trek-ds9-or-voyager-movies" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Plans for Star Trek: DS9 or Voyager movies
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-br" title="Stack Overflow em Português"></div><a href="http://pt.stackoverflow.com/questions/80589/finalidade-de-continue-em-c" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:526 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Finalidade de continue em C?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/71585/how-to-prevent-heavy-rainwater-from-jumping-the-gutter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to prevent heavy rainwater from jumping the gutter?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/214727/simply-connected-rational-homology-spheres" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    simply connected rational homology spheres
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/266443/alternative-idiom-to-phone-it-in" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Alternative idiom to &quot;phone it in&quot;
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-portuguese" title="Portuguese Language Stack Exchange"></div><a href="http://portuguese.stackexchange.com/questions/854/termo-que-nem-est%c3%a1-correto" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:625 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Termo &quot;Que nem&quot; est&#225; correto?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/200143/is-there-experimental-verification-of-the-s-p-d-f-orbital-shapes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there experimental verification of the s, p, d, f orbital shapes?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/54643/encrypting-text" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Encrypting Text
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mechanics" title="Motor Vehicle Maintenance &amp; Repair Stack Exchange"></div><a href="http://mechanics.stackexchange.com/questions/19319/is-it-dangerous-not-having-air-conditioning-cabin-filter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:224 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it dangerous not having air conditioning cabin filter?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/200078/if-a-lens-focuses-all-incoming-light-to-a-point-how-do-we-get-2d-images" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If a lens focuses all incoming light to a point, how do we get 2D images?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/51435/am-i-obligated-to-work-on-a-project-unrelated-to-my-thesis-because-pi-asked-me-t" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Am I obligated to work on a project unrelated to my thesis because PI asked me to?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/20011/a-hard-luck-farmer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A Hard-Luck Farmer
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/99114/source-of-scottys-advice-on-appearing-a-genius" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Source of Scotty&#39;s advice on appearing a genius
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/51372/research-assistant-wishes-to-remain-anonymous-what-to-write-in-the-acknowledgem" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Research assistant wishes to remain anonymous, what to write in the acknowledgement?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/231698/how-to-automatically-go-to-the-next-level" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to automatically go to the next level?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1396012/are-there-any-mersenne-primes-besides-3-that-end-in-3" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are there any Mersenne primes, besides 3, that end in 3
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="defining-the-heap-and-stack-size-for-a-arm-cortex-m4-micro-controller.html#" 
+           class="show-more js-show-more js-gps-track" 
+           data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://embedded.stackexchange.com/feeds/question/125" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/125/ivc/1065');});
+</script>
+<noscript>
+    <div><img src="http://embedded.stackexchange.com/posts/125/ivc/1065" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://embedded.stackexchange.com/tour">tour</a>
+                    <a href="http://embedded.stackexchange.com/help">help</a>
+                    <a href="http://blog.stackexchange.com?blb=1">blog</a>
+                        <a href="http://chat.stackexchange.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on")'>mobile</a>
+                    <b><a href="http://embedded.stackexchange.com/contact">contact us</a></b>
+                        <b><a href="http://meta.embedded.stackexchange.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine&#174; CMS">ExpressionEngine&#174; Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2015 Stack Exchange Inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.8.13.688
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Embedded Systems Stack Exchange works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-24', '.stackexchange.com');
+        
+        
+        ga('set', 'dimension2', '|cortex-m4|arm|bare-metal|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>            
+    </body>
+</html>
